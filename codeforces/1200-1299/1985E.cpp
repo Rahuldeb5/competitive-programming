@@ -44,45 +44,31 @@ void setIO(string name = "") {  // name is nonempty for USACO file I/O
 	}
 }
 
+ll count(ll x1,ll  y1, ll z1, ll x2, ll y2, ll z2) { // 2 is the bigger one
+    return (x2-x1+1) * (y2-y1+1) * (z2-z1+1);
+}
+
 signed main() {
     setIO();
     
     int t; cin >> t;
-
     while(t-- > 0) {
-        int n; cin >> n;
-        str s; cin >> s;
+        ll x, y, z; cin >> x >> y >> z;
+        ll k; cin >> k;
+        ll ans {};
 
-        if(n == 2) {
-            cout << stoi(s) << "\n";
-            continue;
-        }
-        
-        int ans = 261;
-
-        F0R(i, n-1) {
-            string concat = string(1, s[i]) + string(1, s[i+1]);
-            int curr = stoi(concat);
-            int temp = curr;
-            F0R(j, n) {
-                if(j != i && j != i+1) {
-                    if(s[j] == '0') {
-                        ans = 0;
-                        break;
-                    } else if(temp == 1) {
-                        temp *= (int)(s[j]-'0');
-                    }
-                    else if(s[j] != '1') {
-                        temp += (int)(s[j]-'0');
+        for(ll i = x; i >= 1; i--) {
+            if(k % i == 0) {
+                for(ll j =y; j >= 1; j--) {
+                    if((k/i) % j == 0) {
+                        if(ans < count(i, j, ((k/j)/i), x, y, z)) {
+                            ans = count(i, j, ((k/j)/i), x, y, z);
+                        }
                     }
                 }
             }
-            ans = min(ans, temp);
-            if(ans == 0) break;
         }
-
         cout << ans << "\n";
-
     }
     
     return 0;

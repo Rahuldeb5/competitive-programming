@@ -47,15 +47,24 @@ void setIO(string name = "") {  // name is nonempty for USACO file I/O
 signed main() {
     setIO();
     
-    int n, q; cin >> n >> q;
-    V<vi> arr(3, vi(1, 0)); 
-    F0R(i, n) {
-        int x; cin >> x;
-        arr[x-1].pb(arr[x-1][i] + 1);
-    }
-    F0R(i, q) {
-        int a, b; cin >> a >> b;
-        cout << arr[0][b]-arr[0][a]+1 << arr[1][b]-arr[1][a]+1 << arr[2][b]-arr[2][a]+1 << "\n";
+    int t; cin >> t;
+    while(t-- > 0) {
+        ll x, y, k; cin >> x >> y >> k;
+        while(k > 0 && x != 1) {
+            ll add = (x/y + 1) * y - x;
+            add = max(1ll, add);
+            add = min(add, k);
+            x += add;
+
+            while(x % y == 0) {
+                x /= y;
+            }
+            k -= add;
+        
+        }
+        x += k % (y-1);
+        cout << x << "\n";
+
     }
     
     return 0;
