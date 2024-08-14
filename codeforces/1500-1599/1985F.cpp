@@ -2,7 +2,7 @@
 * @problem: F. Final Boss
 * @link: https://codeforces.com/problemset/problem/1985/F
 * @author: Rahul Deb
-* @date: 2024-06-15 18:14
+* @date: 2024-06-21 18:14
 **/
 
 #include <bits/stdc++.h>

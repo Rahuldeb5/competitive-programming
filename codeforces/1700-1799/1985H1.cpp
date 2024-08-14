@@ -2,7 +2,7 @@
 * @problem: H1. Maximize the Largest Component (Easy Version)
 * @link: https://codeforces.com/problemset/problem/1985/H1
 * @author: Rahul Deb
-* @date: 2024-06-15 20:48
+* @date: 2024-06-21 20:48
 **/
 
 #include <bits/stdc++.h>
